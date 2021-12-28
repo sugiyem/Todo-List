@@ -1,0 +1,44 @@
+<div class="card">
+    <div class="card-header bg-primary">
+        <h2>Advanced Search</h2>
+    </div>
+    <div class="card-body">
+        <%= form_for @advanced_search do |s| %>
+            <div class="field form-group">
+                <%= s.label :Task_Name %>
+                <br>
+                <%= s.text_field :keywords, placeholder:"Task Name" %>
+            </div>
+            <div class="field form-group">
+                <%= s.label :Tag %>
+                <br>
+                <%= s.select :tag, options_for_select(@tags), include_blank: true%>
+            </div>
+            <div class="field form-group">
+                <%= s.label :Minimum_Deadline %>
+                <br>
+                <%= s.datetime_select :min_date, include_blank: true %>
+            </div>
+            <div class="field form-group">
+                <%= s.label :Maximum_Deadline %>
+                <br>
+                <%= s.datetime_select :max_date, include_blank: true %>
+            </div>
+            <div class="field form-group">
+                <%= s.label :Status %>
+                <br>
+                <%= s.select :status, options_for_select([true, false]), include_blank: true %>
+            </div>
+        
+            <div class="actions">
+                <%= s.submit "Search", class: "btn btn-secondary" %>
+            </div>
+        
+        <% end %>
+    </div>
+</div>
+
+<br>
+
+
+<%= link_to 'Back', tasks_path , class:"btn btn-secondary"%>

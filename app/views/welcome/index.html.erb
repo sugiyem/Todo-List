@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <h1 class="display-4">What is your plan for today?</h1>
+  <p class="lead">This todo list app will help you to plan your day</p>
+  <hr class="my-4">
+  <% if user_signed_in? %>
+    <p>Click here to see your complete tasks</p>
+    <p class="lead">
+      <%= link_to "Show Tasks", tasks_path, class:"nav-link" %>
+    </p>
+  <% else %>
+    <p>Login here to continue your experience with this app</p>
+    <p class="lead">
+      <%= link_to "Sign In", new_user_session_path, class:"nav-link" %>
+    </p>
+  <% end %>
+</div>

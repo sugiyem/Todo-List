@@ -1,0 +1,36 @@
+<div class="jumbotron">
+  <h1 class="display-4">
+  <p>
+    <strong>Task name:</strong>
+    <%= @task.task_name %>
+  </p>
+
+  <p>
+    <strong>Tag:</strong>
+    <span class="badge badge-pill badge-info">
+      <%= @task.tag %>
+    </span>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <% if @task.is_done %>
+      <span class="fa fa-check"></span>
+    <% else %>
+      <span class="fa fa-times"></span>
+    <% end %>
+  </p>
+  </h1>
+  <hr class="my-4">
+  <p class="lead">
+    <%= link_to 'Edit', edit_task_path(@task), class:"btn btn-info" %> |
+    <%= link_to 'Back', tasks_path, class:"btn btn-info" %>
+  </p>
+</div>
+
+
+
+
+
+
+

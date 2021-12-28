@@ -1,0 +1,44 @@
+<h1>Search Result </h1>
+<p><%= link_to "Back", new_advanced_search_path %></p>
+
+<% if @advanced_search.search_tasks.empty? %>
+    <p>No Tasks Found </p>
+<% else %>
+    <table class="table table-primary table-striped">
+        <thead>
+        <tr>
+            <th>Task name</th>
+            <th>Tag</th>
+            <th>Status</th>
+            <th>Deadline</th>
+            <th colspan="3"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @advanced_search.search_tasks.each do |task| %>
+            <% if task.user == current_user %>
+            <tr>
+                <td><%= task.task_name %></td>
+                <td>
+                <span class="badge badge-pills badge-info">
+                    <%= task.tag %>
+                </span>
+                </td>
+                <td>
+                <% if task.is_done %>
+                    <span class="fa fa-check"></span>
+                <% else %>
+                    <span class="fa fa-times"></span>
+                <% end %>
+                </td>
+                <td><%= task.deadline.to_formatted_s(:long_ordinal) %></td>
+                <td><%= link_to 'Show', task %></td>
+                <td><%= link_to 'Edit', edit_task_path(task) %></td>
+                <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+            <% end %>
+        <% end %>
+        </tbody>
+    </table>
+<% end %>
